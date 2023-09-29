@@ -8,7 +8,7 @@ require_once(__ROOT__ . '/libs/phpmodbus/Phpmodbus/ModbusMaster.php');
 require_once(__MODULE__ . '/PhCEEMRegister.php');
 
 /**
- * Class PhCEEM_Modbus
+ * Class PhCEEMModbus
  * IP-Symcon Phoenix Contact EEM Modbus Module
  *
  * @version     0.1
@@ -19,7 +19,7 @@ require_once(__MODULE__ . '/PhCEEMRegister.php');
  * @link        https://github.com/GGGss/en.phoenix-EEM-MA370
  *
  */
-class PhCEEM_Modbus extends Module
+class PhCEEMModbus extends Module
 {
     use InstanceHelper;
 
