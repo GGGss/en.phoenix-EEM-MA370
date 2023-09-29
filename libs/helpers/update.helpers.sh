@@ -5,7 +5,7 @@ DIR=$(cd `dirname $0` && pwd)
 REPO=$1
 
 if [ -z $REPO ]; then
-    REPO='de.codeking.symcon.*'
+    REPO='en.phoenix-EEM-MA370.*'
 fi
 
 # colors
@@ -38,7 +38,7 @@ find ../ -type d -iname "${REPO}" -print0 | while IFS= read -r -d $'\0' folder; 
 
     if [ $PUSH -eq 1 ]; then
         git commit -a -m "helpers updated" &> /dev/null
-        git remote add origin https://github.com/CodeKing/${project}.git &> /dev/null
+        git remote add origin https://github.com/GGGss/${project}.git &> /dev/null
         git push -u origin master &> /dev/null
     fi
 
