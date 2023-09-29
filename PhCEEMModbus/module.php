@@ -5,21 +5,21 @@ define('__MODULE__', dirname(__FILE__));
 
 require_once(__ROOT__ . '/libs/helpers/autoload.php');
 require_once(__ROOT__ . '/libs/phpmodbus/Phpmodbus/ModbusMaster.php');
-require_once(__MODULE__ . '/SMARegister.php');
+require_once(__MODULE__ . '/PhCEEMRegister.php');
 
 /**
- * Class SMA_Modbus
- * IP-Symcon SMA Modbus Module
+ * Class PhCEEM_Modbus
+ * IP-Symcon Phoenix Contact EEM Modbus Module
  *
  * @version     0.1
  * @category    Symcon
- * @package     de.codeking.symcon
- * @author      Frank Herrmann <frank@codeking.de>
- * @link        https://codeking.de
- * @link        https://github.com/CodeKing/de.codeking.symcon
+ * @package     en.phoenix-EEM-MA370
+ * @author      Fredje Gallon <fredje@gggsss.com>
+ * @link        https://www.gggss.com
+ * @link        https://github.com/GGGss/en.phoenix-EEM-MA370
  *
  */
-class SMAModbus extends Module
+class PhCEEM_Modbus extends Module
 {
     use InstanceHelper;
 
@@ -122,13 +122,13 @@ class SMAModbus extends Module
     }
 
     /**
-     * read & update device registersSMA_UpdateDevice
+     * read & update device registersPhCEEM_UpdateDevice
      * @param bool $applied
      */
     public function UpdateDevice($applied = false)
     {
         $this->update = 'device';
-        $this->ReadData(SMARegister::device_addresses);
+        $this->ReadData(PhCEEMRegister::device_addresses);
 
         if ($this->applied || $applied) {
             if (isset($this->data['Device class'])) {
@@ -150,7 +150,7 @@ class SMAModbus extends Module
     {
         if ($this->_isDay() || $applied || $this->applied) {
             $this->update = 'values';
-            $this->ReadData(SMARegister::value_addresses);
+            $this->ReadData(PhCEEMRegister::value_addresses);
         }
     }
 
@@ -161,7 +161,7 @@ class SMAModbus extends Module
     {
         if ($this->_isDay() || $this->applied) {
             $this->update = 'current';
-            $this->ReadData(SMARegister::current_addresses);
+            $this->ReadData(PhCEEMRegister::current_addresses);
         }
     }
 
@@ -171,7 +171,7 @@ class SMAModbus extends Module
     private function SaveData()
     {
         // loop data and create variables
-        $position = ($this->update == 'values') ? count(SMARegister::device_addresses) - 1 : 0;
+        $position = ($this->update == 'values') ? count(PhCEEMRegister::device_addresses) - 1 : 0;
         foreach ($this->data AS $key => $value) {
             $this->CreateVariableByIdentifier([
                 'parent_id' => $this->InstanceID,
@@ -234,11 +234,11 @@ class SMAModbus extends Module
                     $value = PhpType::bytes2unsignedInt($value, $endianness);
                 }
 
-                // set value to 0 if value is negative or invalid
-                if ((is_int($value) || is_float($value)) && $value < 0 || $value == 65535) {
-                    $value = (float)0;
-                }
-
+                // set value to 0 if value is negative or invalid !! Not applicable, we can have negative values
+                //if ((is_int($value) || is_float($value)) && $value < 0 || $value == 65535) {
+                //    $value = (float)0;
+                //}
+                
                 // continue if value is still an array
                 if (is_array($value)) {
                     continue;
