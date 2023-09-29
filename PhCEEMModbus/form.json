@@ -14,8 +14,8 @@
       "caption": "Device",
       "options": [
         {
-          "label": "EEM-MA370",
-          "value": "eem-ma370"
+          "label": "Default",
+          "value": "default"
         },
         {
           "label": "EEM-Test",
