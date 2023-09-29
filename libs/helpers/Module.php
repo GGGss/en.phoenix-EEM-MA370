@@ -58,7 +58,7 @@ class Module extends IPSModule
     }
 
     /**
-     * Enable Action
+     * Disable Action
      * attach prefix to ident
      * @param string $Ident
      * @return bool
