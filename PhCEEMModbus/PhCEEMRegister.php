@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Class SMARegister
- * Constants with sma register and value translations
+ * Class PhCEEMRegister
+ * Constants with EEM-measuring register and value translations
  *
  * @version     0.1
  * @category    Symcon
@@ -12,7 +12,7 @@
  * @link        https://github.com/GGGss/en.phoenix-EEM-MA370
  *
  */
-class SMARegister
+class PhCEEMRegister
 {
     /**
      * device addresses
