@@ -2,15 +2,7 @@
   "elements": [
     {
       "type": "Label",
-      "label": "___ [ Support ] ________________________________________________________________________________________"
-    },
-    {
-      "type": "Label",
-      "label": "If you like this module and want to support further development of my symcon modules, feel free to donate at www.paypal.me/codeking"
-    },
-    {
-      "type": "Label",
-      "label": "www.paypal.me/codeking"
+      "label": "www.gggss.com"
     },
     {
       "type": "Label",
@@ -22,12 +14,12 @@
       "caption": "Device",
       "options": [
         {
-          "label": "Default",
-          "value": "default"
+          "label": "EEM-MA370",
+          "value": "eem-ma370"
         },
         {
-          "label": "Sunny Boy",
-          "value": "sunnyboy"
+          "label": "EEM-Test",
+          "value": "test"
         }
       ]
     },
@@ -83,7 +75,7 @@
     {
       "code": 101,
       "icon": "inactive",
-      "caption": "Please enter the ip address and the tcp port of your SMA device."
+      "caption": "Please enter the ip address and the tcp port of your Phoenix Contact EEM device."
     },
     {
       "code": 102,
@@ -93,24 +85,24 @@
     {
       "code": 201,
       "icon": "error",
-      "caption": "Error: Please enter the ip address and the tcp port of your SMA device."
+      "caption": "Error: Please enter the ip address and the tcp port of your Phoenix Contact EEM device."
     },
     {
       "code": 202,
       "icon": "error",
-      "caption": "Error: Could not read data from your SMA device."
+      "caption": "Error: Could not read data from your Phoenix Contact EEM device."
     }
   ],
   "actions": [
     {
       "type": "Button",
       "label": "Read Device",
-      "onClick": "SMAModbus_UpdateDevice($id, true);"
+      "onClick": "PhCEEMModbus_UpdateDevice($id, true);"
     },
     {
       "type": "Button",
       "label": "Update Values",
-      "onClick": "SMAModbus_UpdateValues($id, true);"
+      "onClick": "PhCEEMModbus_UpdateValues($id, true);"
     }
   ]
 }
