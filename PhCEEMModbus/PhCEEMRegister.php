@@ -6,10 +6,10 @@
  *
  * @version     0.1
  * @category    Symcon
- * @package     de.codeking.symcon
+ * @package     en.phoenix-EEM-MA370
  * @author      Fredje Gallon <fredje@gggss.com>
  * @link        https://www.gggss.com
- * @link        https://github.com/GGGss/en.phoenix-EEM370
+ * @link        https://github.com/GGGss/en.phoenix-EEM-MA370
  *
  */
 class SMARegister
