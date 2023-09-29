@@ -1,8 +1,8 @@
 {
   "id": "{BFF4BCCC-7912-4CF0-A67F-4C52C254AE88}",
-  "name": "Phoenix Contact EEM ModBus",
+  "name": "PhCEEMModBus",
   "type": 3,
-  "vendor": "Phoenix Contact",
+  "vendor": "GGGss.com",
   "aliases": [
     "PhCEEM ModBus"
   ],
