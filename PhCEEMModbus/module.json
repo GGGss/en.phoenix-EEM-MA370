@@ -1,13 +1,13 @@
 {
-  "id": "{D635007F-C977-414F-B241-AA09DC3669B0}",
-  "name": "SMA ModBus",
+  "id": "{bff4bccc-7912-4cf0-a67f-4c52c254ae88}",
+  "name": "Phoenix Contact EEM ModBus",
   "type": 3,
-  "vendor": "SMA",
+  "vendor": "Phoenix Contact",
   "aliases": [
-    "SMA ModBus"
+    "PhCEEM ModBus"
   ],
   "parentRequirements": [],
   "childRequirements": [],
   "implemented": [],
-  "prefix": "SMAModbus"
+  "prefix": "PhCEEMModbus"
 }
