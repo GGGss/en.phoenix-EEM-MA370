@@ -19,7 +19,7 @@ class PhCEEMRegister
      * addresses with fixed values
      */
     const device_addresses = [
-        'EEM-MA370' => [
+        'Default' => [
             /**
              * Global
              */
@@ -392,7 +392,7 @@ class PhCEEMRegister
      * addresses with updated values
      */
     const value_addresses = [
-        'EEM-MA370' => [
+        'Default' => [
             /**
              * Global
              */
@@ -483,7 +483,7 @@ class PhCEEMRegister
      * adresses for high frequent values
      */
     const current_addresses = [
-        'EEM-MA370' => [
+        'Default' => [
             32790 => [
                 'name' => 'Total Active Power',
                 'count' => 2,
