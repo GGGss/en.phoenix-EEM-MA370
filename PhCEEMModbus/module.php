@@ -233,6 +233,10 @@ class PhCEEMModbus extends Module
                     // convert to unsigned int
                     $value = PhpType::bytes2unsignedInt($value, $endianness);
                 }
+                else if (substr($config['type'],0,2) == 'FL') {
+                    // convert to Float
+                    $value = PhpType::bytes2float($value, $endianness);
+                }
 
                 // set value to 0 if value is negative or invalid !! Not applicable, we can have negative values
                 //if ((is_int($value) || is_float($value)) && $value < 0 || $value == 65535) {
