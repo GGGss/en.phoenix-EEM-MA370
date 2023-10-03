@@ -11,7 +11,7 @@ require_once(__MODULE__ . '/PhCEEMRegister.php');
  * Class PhCEEMModbus
  * IP-Symcon Phoenix Contact EEM Modbus Module
  *
- * @version     0.1
+ * @version     0.2
  * @category    Symcon
  * @package     en.phoenix-EEM-MA370
  * @author      Fredje Gallon <fredje@gggsss.com>
@@ -215,15 +215,19 @@ class PhCEEMModbus extends Module
 
                 // read register
                 $value = $this->modbus->readMultipleRegisters($this->unit_id, (int)$address, $config['count']);
+//if($address==32780) {echo('module.php: address='.$address.' config '.print_r($config).PHP_EOL);}
+//if($address==32780) {echo('module.php: value='.print_r($value).PHP_EOL);}
 
                 // set endianness
-                $endianness = in_array($config['format'], ['RAW', 'TEMP', 'DURATION_S', 'DURATION_H']) ? 2 : 0;
-
+                $endianness = 0;
+				$bytes= in_array($config['format'], ['DEC', 'RAW', 'TEMP', 'DURATION_S', 'DURATION_H']) ? 2 : 0;
+				
+//if($address==32780) {echo('module.php: value endianess='.$endianness.PHP_EOL.print_r($value).PHP_EOL);}
                 // fix bytes
-                $value = $endianness
+                $value = $bytes
                     ? array_chunk($value, 4)[0]
                     : array_chunk($value, 2)[1];
-
+//if($address==32780){ echo('module.php: after value='.print_r($value).PHP_EOL);}
                 // convert signed value
                 if (substr($config['type'], 0, 1) == 'S') {
                     // convert to signed int
@@ -237,6 +241,7 @@ class PhCEEMModbus extends Module
                     // convert to Float
                     $value = PhpType::bytes2float($value, $endianness);
                 }
+//if($address=32768){echo('module.php: Value now converted to: '.print_r($value).PHP_EOL);}
 
                 // set value to 0 if value is negative or invalid !! Not applicable, we can have negative values
                 //if ((is_int($value) || is_float($value)) && $value < 0 || $value == 65535) {
@@ -353,6 +358,42 @@ class PhCEEMModbus extends Module
                 IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
                 IPS_SetVariableProfileText($profile_id, '', ' ' . $this->Translate('h')); // Watt
                 IPS_SetVariableProfileIcon($profile_id, 'Clock');
+                break;
+			case 'Volt2':
+			    IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' V');
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+			case 'Volt4':
+			    IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' V'); 
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+			case 'VA':
+			    IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' VA'); 
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+			case 'Var':
+			    IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' Var'); 
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+			case 'Amp':
+			    IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' A'); 
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
+                break;
+			case 'Hz':
+			    IPS_CreateVariableProfile($profile_id, 2); // float
+                IPS_SetVariableProfileDigits($profile_id, 1); // 1 decimal
+                IPS_SetVariableProfileText($profile_id, '', ' Hz'); 
+                IPS_SetVariableProfileIcon($profile_id, 'Electricity');
                 break;
         endswitch;
     }
